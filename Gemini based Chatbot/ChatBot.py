@@ -2,11 +2,9 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 
-# Load environment variables from .env file
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
-# Configure Gemini
 genai.configure(api_key=API_KEY)
 
 model = genai.GenerativeModel("gemini-2.0-flash")
