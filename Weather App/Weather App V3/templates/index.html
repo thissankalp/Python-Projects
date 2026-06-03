@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Weather — Search{% endblock %}
+
+{% block content %}
+<main class="page">
+    <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.665-7.258m0 0A3.75 3.75 0 0015 6.75h-1.5m-4.5 0a3 3 0 11-6 0m6 0a3 3 0 10-6 0m6 0v2.25m0-2.25V6.75m0 2.25v2.25" />
+            </svg>
+        </div>
+        <div>
+            <h1>SkyCast</h1>
+            <span>Live weather, anywhere</span>
+        </div>
+    </div>
+
+    <section class="card">
+        <h2>Where to today?</h2>
+        <p class="subtitle">Enter a city name to see current conditions.</p>
+
+        <form class="search-form" method="POST" action="/">
+            <div class="input-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <input type="text" name="city" placeholder="e.g. London, Tokyo, Cairo" autocomplete="off" required>
+            </div>
+            <button type="submit" class="btn-primary">Get Weather</button>
+        </form>
+
+        <p class="hint">Powered by Open-Meteo</p>
+    </section>
+</main>
+{% endblock %}

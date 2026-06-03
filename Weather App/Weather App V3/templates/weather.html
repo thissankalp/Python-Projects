@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}{{ location }} — Weather{% endblock %}
+
+{% if description == "Clear Sky" %}
+    {% set theme = "theme-clear" %}
+    {% set icon = "☀️" %}
+{% elif description == "Mainly Clear" %}
+    {% set theme = "theme-mainly-clear" %}
+    {% set icon = "🌤️" %}
+{% elif description == "Partly Cloudy" %}
+    {% set theme = "theme-partly-cloudy" %}
+    {% set icon = "⛅" %}
+{% elif description == "Overcast" %}
+    {% set theme = "theme-overcast" %}
+    {% set icon = "☁️" %}
+{% else %}
+    {% set theme = "theme-unknown" %}
+    {% set icon = "🌡️" %}
+{% endif %}
+
+{% block body_class %}{{ theme }}{% endblock %}
+
+{% block content %}
+<main class="page">
+    <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.665-7.258m0 0A3.75 3.75 0 0015 6.75h-1.5m-4.5 0a3 3 0 11-6 0m6 0a3 3 0 10-6 0m6 0v2.25m0-2.25V6.75m0 2.25v2.25" />
+            </svg>
+        </div>
+        <div>
+            <h1>SkyCast</h1>
+            <span>Current conditions</span>
+        </div>
+    </div>
+
+    <section class="card card-wide">
+        <div class="weather-hero">
+            <h2 class="location-name">{{ location }}</h2>
+            <p class="weather-desc"><span aria-hidden="true">{{ icon }}</span> {{ description }}</p>
+            <p class="temp-display">{{ temperature }}<span class="temp-unit">°C</span></p>
+            <p class="time-stamp">Observed at {{ time }}</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat">
+                <p class="stat-label">Temperature</p>
+                <p class="stat-value">{{ temperature }} °C</p>
+            </div>
+            <div class="stat">
+                <p class="stat-label">Wind speed</p>
+                <p class="stat-value">{{ wind_speed }} km/h</p>
+            </div>
+            <div class="stat">
+                <p class="stat-label">Wind direction</p>
+                <div class="stat-value wind-compass">
+                    <div class="compass-ring">
+                        <div class="compass-arrow" style="transform: rotate({{ wind_direction }}deg);"></div>
+                    </div>
+                    {{ wind_direction }}°
+                </div>
+            </div>
+            <div class="stat">
+                <p class="stat-label">Conditions</p>
+                <p class="stat-value">{{ description }}</p>
+            </div>
+        </div>
+
+        <a href="/" class="link-back">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Search another city
+        </a>
+    </section>
+</main>
+{% endblock %}
