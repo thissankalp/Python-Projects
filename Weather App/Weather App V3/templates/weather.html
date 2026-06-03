@@ -56,7 +56,7 @@
                 <p class="stat-label">Wind direction</p>
                 <div class="stat-value wind-compass">
                     <div class="compass-ring">
-                        <div class="compass-arrow" style="transform: rotate({{ wind_direction }}deg);"></div>
+                        <div class="compass-arrow" style="--direction: {{ wind_direction }}deg; transform: rotate(var(--direction));"></div>
                     </div>
                     {{ wind_direction }}°
                 </div>
