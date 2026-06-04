@@ -47,7 +47,6 @@ def delete_tasks():
 
     print("Task deleted successfully !")
 
-
 while True:
     print("\n===== TO-DO LIST =====")
     print("1. Add Task")
